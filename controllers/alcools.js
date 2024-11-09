@@ -1,4 +1,4 @@
-const alcohols = [
+const alcools = [
     {
         id: "1",
         name: "Wine",
