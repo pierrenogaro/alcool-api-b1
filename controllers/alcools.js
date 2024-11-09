@@ -49,4 +49,22 @@ function show(req, res) {
     res.json(alcool);
 }
 
-module.exports = { index, show };
+function create(req, res) {
+    const { name, degree, ingredients, description } = req.body;
+    if (!name || !degree) {
+        return res.status(400).send('Name & degree are required');
+    }
+
+    const newAlcool = {
+        id: (alcools.length + 1).toString(),
+        name,
+        degree,
+        ingredients,
+        description
+    };
+
+    alcools.push(newAlcool);
+    res.status(201).json(newAlcool);
+}
+
+module.exports = { index, show, create };
