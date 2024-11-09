@@ -37,7 +37,16 @@ const alcools = [
 ];
 
 function index(req, res) {
-    res.json(alcohols);
+    res.json(alcools);
 }
 
-module.exports = { index };
+function show(req, res) {
+    const id = req.params.id;
+    const alcool = alcools.find(alcool => alcool.id === id);
+    if (!alcool) {
+        return res.status(404).send('Product not found');
+    }
+    res.json(alcool);
+}
+
+module.exports = { index, show };
