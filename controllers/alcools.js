@@ -44,7 +44,7 @@ function show(req, res) {
     const id = req.params.id;
     const alcool = alcools.find(alcool => alcool.id === id);
     if (!alcool) {
-        return res.status(404).send('Product not found');
+        return res.status(404).send('Alcool not found');
     }
     res.json(alcool);
 }
@@ -67,4 +67,40 @@ function create(req, res) {
     res.status(201).json(newAlcool);
 }
 
-module.exports = { index, show, create };
+function update(req, res) {
+    const { name, degree, ingredients, description } = req.body;
+    const id = req.params.id;
+    const alcoolIndex = alcools.findIndex(alcool => alcool.id === id);
+
+    if (alcoolIndex === -1) {
+        return res.status(404).send('Alcool not found');
+    }
+    if (!name || !degree || !ingredients || !description) {
+        return res.status(400).send('Name & degree are required');
+    }
+
+    const updatedAlcool = {
+        id: alcools[alcoolIndex].id,
+        name,
+        degree,
+        ingredients,
+        description
+    };
+
+    alcools[alcoolIndex] = updatedAlcool;
+    res.status(200).json(updatedAlcool);
+}
+
+function deleteAlcool(req, res) {
+    const id = req.params.id;
+    const alcool = alcools.findIndex(alcool => alcool.id === id);
+
+    if (alcool === -1) {
+        return res.status(404).send('Alcool not found');
+    }
+
+    alcools.splice(alcool, 1);
+    res.status(200).json('Alcool deleted');
+}
+
+module.exports = { index, show, create, update, deleteAlcool };
