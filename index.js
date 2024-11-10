@@ -1,10 +1,12 @@
+require('dotenv').config();
 const express = require('express');
-const routes = require('./routes/alcools');
+const alcoolsRoutes = require('./routes/alcools');
+const authRoutes = require('./routes/auth');
 const app = express();
 const port = 8000;
-
 const mongoose = require('mongoose')
-const mongodbUri = "mongodb://127.0.0.1:27017/alcoolsDB";
+const authMiddleware = require("./middlewares/authMiddleware");
+const mongodbUri = process.env.MONGODB_URI;
 
 mongoose.connect(mongodbUri)
     .then(() => {
@@ -16,7 +18,9 @@ mongoose.connect(mongodbUri)
 
 
 app.use(express.json());
-app.use('/alcools', routes);
+app.use('/alcools', authMiddleware, alcoolsRoutes);
+app.use('/auth', authRoutes);
+
 
 app.get('/', (req, res) => {
     res.send('Welcome to the alcool API 👋');
