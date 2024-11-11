@@ -1,10 +1,11 @@
 require('dotenv').config();
 const express = require('express');
+const path = require('path');
 const alcoolsRoutes = require('./routes/alcools');
 const authRoutes = require('./routes/auth');
 const app = express();
 const port = 8000;
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const authMiddleware = require("./middlewares/authMiddleware");
 const mongodbUri = process.env.MONGODB_URI;
 
@@ -16,14 +17,14 @@ mongoose.connect(mongodbUri)
         console.error('🔴 Failed to connect to MongoDB:', err.message);
     });
 
-
 app.use(express.json());
 app.use('/alcools', authMiddleware, alcoolsRoutes);
 app.use('/auth', authRoutes);
+app.use('/images', express.static('images'));
 
 
 app.get('/', (req, res) => {
-    res.send('Welcome to the alcool API 👋');
+    res.sendFile(path.join(__dirname, 'templates', 'index.html'));
 });
 
 app.listen(port, () => {

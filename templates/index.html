@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcool API Documentation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light p-5 bg-dark">
+<div class="container">
+    <h1 class="mb-4 text-center text-white">🍷 Alcool API Documentation</h1>
+
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h2>📢 Introduction</h2>
+        </div>
+        <div class="card-body">
+            <p>This API allows users to manage a collection of alcoholic beverages. It includes user authentication and CRUD operations for managing the alcohol data.</p>
+            <img src="../images/chouffe-header.jpg" alt="Postman Login Request" class="img-fluid rounded shadow-sm mb-3">
+        </div>
+    </div>
+
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-secondary text-white">
+            <h2>🔐 Authentication</h2>
+        </div>
+        <div class="card-body">
+            <p>To use the API, register an account and then log in to get a token for secure access to protected routes.</p>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4>Register</h4>
+                    <p><strong>POST /auth/register</strong> - Register a new user.</p>
+                    <pre>Headers: Content-Type: application/json <br>Body: { "username": "yourUsername", "password": "yourPassword" }</pre>
+                    <p><strong>Example Request:</strong></p>
+                    <img src="../images/register-postman.png" alt="Postman Register Request" class="img-fluid rounded shadow-sm mb-3">
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4>Login</h4>
+                    <p><strong>POST /auth/login</strong> - Log in with your credentials to get a token.</p>
+                    <pre>Headers: Content-Type: application/json <br>Body: { "username": "yourUsername", "password": "yourPassword" }</pre>
+                    <p><strong>Example Request:</strong></p>
+                    <img src="../images/login-postman.png" alt="Postman Login Request" class="img-fluid rounded shadow-sm mb-3">
+                </div>
+            </div>
+
+            <div class="alert alert-info">
+                <strong>Note:</strong> Use the returned token in the Authorization header for all protected routes.
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-success text-white">
+            <h2>🍸 Alcools Routes</h2>
+        </div>
+        <div class="card-body">
+            <p>The following endpoints allow you to manage the alcohol collection. All routes require authentication with a token.</p>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5>Get All Alcools</h5>
+                    <p><strong>GET /alcools/all</strong> - Retrieve a list of all alcoholic beverages.</p>
+                    <pre>Headers: Authorization: Bearer &lt;token&gt;</pre>
+                    <p><strong>Example Request:</strong></p>
+                    <img src="../images/get-all-postman.png" alt="Postman Get All Request" class="img-fluid rounded shadow-sm mb-3">
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5>Get a Specific Alcool</h5>
+                    <p><strong>GET /alcools/:id</strong> - Retrieve details for a specific beverage by ID.</p>
+                    <pre>Headers: Authorization: Bearer &lt;token&gt;</pre>
+                    <p><strong>Example Request:</strong></p>
+                    <img src="../images/get-specific-postman.png" alt="Postman Get Specific Request" class="img-fluid rounded shadow-sm mb-3">
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5>Create a New Alcool</h5>
+                    <p><strong>POST /alcools/create</strong> - Add a new alcoholic beverage.</p>
+                    <pre>Headers: Authorization: Bearer &lt;token&gt; <br>Body: { "name": "AlcoolName", "degree": "45", "ingredients": ["ingredient1", "ingredient2"], "description": "A fine drink" }</pre>
+                    <p><strong>Example Request:</strong></p>
+                    <img src="../images/create-postman.png" alt="Postman Create Request" class="img-fluid rounded shadow-sm mb-3">
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5>Update an Alcool</h5>
+                    <p><strong>PUT /alcools/update/:id</strong> - Update an alcoholic beverage by ID.</p>
+                    <pre>Headers: Authorization: Bearer &lt;token&gt; <br>Body: { "name": "UpdatedName", "degree": "50" }</pre>
+                    <p><strong>Example Request:</strong></p>
+                    <img src="../images/update-postman.png" alt="Postman Update Request" class="img-fluid rounded shadow-sm mb-3">
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5>Delete an Alcool</h5>
+                    <p><strong>DELETE /alcools/delete/:id</strong> - Remove a beverage by ID.</p>
+                    <pre>Headers: Authorization: Bearer &lt;token&gt;</pre>
+                    <p><strong>Example Request:</strong></p>
+                    <img src="../images/delete-postman.png" alt="Postman Delete Request" class="img-fluid rounded shadow-sm mb-3">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-danger text-white">
+            <h2>⚠️ Common Errors</h2>
+        </div>
+        <div class="card-body">
+            <p>Below are common error responses and troubleshooting tips:</p>
+            <ul>
+                <li><strong>400 Bad Request:</strong> Invalid data or missing fields.</li>
+                <li><strong>401 Unauthorized:</strong> Missing or invalid token.</li>
+                <li><strong>403 Forbidden:</strong> Token expired or access denied.</li>
+                <li><strong>404 Not Found:</strong> Resource not found.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
