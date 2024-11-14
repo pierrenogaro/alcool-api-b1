@@ -6,7 +6,6 @@ const authRoutes = require('./routes/auth');
 const app = express();
 const port = 8000;
 const mongoose = require('mongoose');
-const authMiddleware = require("./middlewares/authMiddleware");
 const mongodbUri = process.env.MONGODB_URI;
 
 mongoose.connect(mongodbUri)
@@ -18,7 +17,7 @@ mongoose.connect(mongodbUri)
     });
 
 app.use(express.json());
-app.use('/alcools', authMiddleware, alcoolsRoutes);
+app.use('/alcools', alcoolsRoutes);
 app.use('/auth', authRoutes);
 app.use('/images', express.static('images'));
 
