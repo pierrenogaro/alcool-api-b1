@@ -1,4 +1,5 @@
 const Alcool = require("../models/Alcool");
+const Comment = require('../models/Comment');
 
 async function index(req, res) {
     const alcools = await Alcool.find({}).populate('author');
@@ -7,7 +8,8 @@ async function index(req, res) {
 
 async function show(req, res) {
     const alcool = await Alcool.findById(req.params.id).populate('author');
-    res.send(alcool);
+    const comments = await Comment.find({ alcool: req.params.id }).populate('author');
+    res.status(200).json({ alcool, comments });
 }
 
 async function create(req, res) {

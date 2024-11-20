@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const alcoolsRoutes = require('./routes/alcools');
 const authRoutes = require('./routes/auth');
+const commentRoutes = require('./routes/comments');
 const app = express();
 const port = 8000;
 const mongoose = require('mongoose');
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use('/alcools', alcoolsRoutes);
 app.use('/auth', authRoutes);
 app.use('/images', express.static('images'));
+app.use('/comments', commentRoutes);
 
 
 app.get('/', (req, res) => {
