@@ -2,15 +2,21 @@ const mongoose = require('mongoose');
 
 const AlcoolSchema = new mongoose.Schema({
     name: {
-        type: mongoose.SchemaTypes.String,
+        type: mongoose.Schema.Types.String,
         required: true
     },
     degree: {
-        type: mongoose.SchemaTypes.String,
+        type: mongoose.Schema.Types.String,
         required: true
     },
-    ingredients: [mongoose.SchemaTypes.String],
-    description: mongoose.SchemaTypes.String
+    ingredients: [mongoose.Schema.Types.String],
+    description: mongoose.Schema.Types.String,
+
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
 });
 
 module.exports = mongoose.model('Alcool', AlcoolSchema);
