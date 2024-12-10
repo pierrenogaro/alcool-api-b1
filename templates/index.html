@@ -17,7 +17,7 @@
         </div>
         <div class="card-body">
             <p>This API allows users to manage a collection of alcoholic beverages. It includes user authentication and CRUD operations for managing the alcohol data.</p>
-            <img src="../images/chouffe-header.jpg" alt="Postman Login Request" class="img-fluid rounded shadow-sm mb-3">
+            <img src="../images/chouffe-header.jpg" alt="API Introduction" class="img-fluid rounded shadow-sm mb-3">
         </div>
     </div>
 
@@ -33,8 +33,7 @@
                     <h4>Register</h4>
                     <p><strong>POST /auth/register</strong> - Register a new user.</p>
                     <pre>Headers: Content-Type: application/json <br>Body: { "username": "yourUsername", "password": "yourPassword" }</pre>
-                    <p><strong>Example Request:</strong></p>
-                    <img src="../images/register-postman.png" alt="Postman Register Request" class="img-fluid rounded shadow-sm mb-3">
+                    <img src="../images/register-postman.png" alt="Register Example" class="img-fluid rounded shadow-sm mb-3">
                 </div>
             </div>
 
@@ -43,8 +42,7 @@
                     <h4>Login</h4>
                     <p><strong>POST /auth/login</strong> - Log in with your credentials to get a token.</p>
                     <pre>Headers: Content-Type: application/json <br>Body: { "username": "yourUsername", "password": "yourPassword" }</pre>
-                    <p><strong>Example Request:</strong></p>
-                    <img src="../images/login-postman.png" alt="Postman Login Request" class="img-fluid rounded shadow-sm mb-3">
+                    <img src="../images/login-postman.png" alt="Login Example" class="img-fluid rounded shadow-sm mb-3">
                 </div>
             </div>
 
@@ -65,9 +63,7 @@
                 <div class="card-body">
                     <h5>Get All Alcools</h5>
                     <p><strong>GET /alcools/all</strong> - Retrieve a list of all alcoholic beverages.</p>
-                    <pre>Headers: Authorization: Bearer &lt;token&gt;</pre>
-                    <p><strong>Example Request:</strong></p>
-                    <img src="../images/get-all-postman.png" alt="Postman Get All Request" class="img-fluid rounded shadow-sm mb-3">
+                    <img src="../images/get-all-postman.png" alt="Get All Example" class="img-fluid rounded shadow-sm mb-3">
                 </div>
             </div>
 
@@ -75,7 +71,6 @@
                 <div class="card-body">
                     <h5>Get a Specific Alcool</h5>
                     <p><strong>GET /alcools/:id</strong> - Retrieve details for a specific beverage by ID.</p>
-                    <pre>Headers: Authorization: Bearer &lt;token&gt;</pre>
                     <p><strong>Example Request:</strong></p>
                     <img src="../images/get-specific-postman.png" alt="Postman Get Specific Request" class="img-fluid rounded shadow-sm mb-3">
                 </div>
@@ -85,9 +80,8 @@
                 <div class="card-body">
                     <h5>Create a New Alcool</h5>
                     <p><strong>POST /alcools/create</strong> - Add a new alcoholic beverage.</p>
-                    <pre>Headers: Authorization: Bearer &lt;token&gt; <br>Body: { "name": "AlcoolName", "degree": "45", "ingredients": ["ingredient1", "ingredient2"], "description": "A fine drink" }</pre>
-                    <p><strong>Example Request:</strong></p>
-                    <img src="../images/create-postman.png" alt="Postman Create Request" class="img-fluid rounded shadow-sm mb-3">
+                    <pre>Headers: Authorization: Bearer &lt;token&gt; <br>Body: { "name": "AlcoolName", "degree": "45", "ingredients": ["sugar", "water"], "description": "A fine drink" }</pre>
+                    <img src="../images/create-postman.png" alt="Create Example" class="img-fluid rounded shadow-sm mb-3">
                 </div>
             </div>
 
@@ -96,18 +90,41 @@
                     <h5>Update an Alcool</h5>
                     <p><strong>PUT /alcools/update/:id</strong> - Update an alcoholic beverage by ID.</p>
                     <pre>Headers: Authorization: Bearer &lt;token&gt; <br>Body: { "name": "UpdatedName", "degree": "50" }</pre>
-                    <p><strong>Example Request:</strong></p>
-                    <img src="../images/update-postman.png" alt="Postman Update Request" class="img-fluid rounded shadow-sm mb-3">
+                    <img src="../images/update-postman.png" alt="Update Example" class="img-fluid rounded shadow-sm mb-3">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-info text-white">
+            <h2>🗨️ Comments Routes</h2>
+        </div>
+        <div class="card-body">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5>Add a Comment</h5>
+                    <p><strong>POST /comments/:alcoolId</strong> - Add a comment to an alcool.</p>
+                    <pre>Headers: Authorization: Bearer &lt;token&gt;<br>Body: { "content": "Great drink!" }</pre>
+                    <img src="../images/add-comment-postman.png" alt="Postman Get Specific Request" class="img-fluid rounded shadow-sm mb-3">
                 </div>
             </div>
 
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5>Delete an Alcool</h5>
-                    <p><strong>DELETE /alcools/delete/:id</strong> - Remove a beverage by ID.</p>
+                    <h5>Update a Comment</h5>
+                    <p><strong>PUT /comments/:id</strong> - Update a comment by ID.</p>
+                    <pre>Headers: Authorization: Bearer &lt;token&gt;<br>Body: { "content": "Updated content." }</pre>
+                    <img src="../images/update-comment-postman.png" alt="Postman Get Specific Request" class="img-fluid rounded shadow-sm mb-3">
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5>Delete a Comment</h5>
+                    <p><strong>DELETE /comments/:id</strong> - Remove a comment by ID.</p>
                     <pre>Headers: Authorization: Bearer &lt;token&gt;</pre>
-                    <p><strong>Example Request:</strong></p>
-                    <img src="../images/delete-postman.png" alt="Postman Delete Request" class="img-fluid rounded shadow-sm mb-3">
+                    <img src="../images/delete-comment-postman.png" alt="Postman Get Specific Request" class="img-fluid rounded shadow-sm mb-3">
                 </div>
             </div>
         </div>
@@ -118,11 +135,10 @@
             <h2>⚠️ Common Errors</h2>
         </div>
         <div class="card-body">
-            <p>Below are common error responses and troubleshooting tips:</p>
             <ul>
                 <li><strong>400 Bad Request:</strong> Invalid data or missing fields.</li>
                 <li><strong>401 Unauthorized:</strong> Missing or invalid token.</li>
-                <li><strong>403 Forbidden:</strong> Token expired or access denied.</li>
+                <li><strong>403 Forbidden:</strong> Access denied.</li>
                 <li><strong>404 Not Found:</strong> Resource not found.</li>
             </ul>
         </div>
