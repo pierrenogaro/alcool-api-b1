@@ -9,14 +9,15 @@
 </head>
 <body class="bg-light p-5 bg-dark">
 <div class="container">
-    <h1 class="mb-4 text-center text-white">🍷 Alcool API Documentation</h1>
+    <h1 class="mb-4 text-center text-primary">🍷 Alcool API Documentation</h1>
 
     <div class="card mb-4 shadow-sm">
         <div class="card-header bg-primary text-white">
-            <h2>📢 Introduction</h2>
+            <h2>📢 Overview</h2>
         </div>
         <div class="card-body">
-            <p>This API allows users to manage a collection of alcoholic beverages. It includes user authentication and CRUD operations for managing the alcohol data.</p>
+            <p>This API allows users to manage a collection of alcoholic beverages. It provides authentication through JSON Web Tokens (JWT) and supports CRUD (Create, Read, Update, Delete) operations for alcohol data and user comments.</p>
+            <p>Base URL: <code>https://alcool-api.pierrenogaro.com/</code></p>
             <img src="../images/chouffe-header.jpg" alt="API Introduction" class="img-fluid rounded shadow-sm mb-3">
         </div>
     </div>
@@ -26,23 +27,21 @@
             <h2>🔐 Authentication</h2>
         </div>
         <div class="card-body">
-            <p>To use the API, register an account and then log in to get a token for secure access to protected routes.</p>
+            <p>To use the API, you need to register and then log in to receive a token for secure access to protected routes.</p>
 
             <div class="card mb-3">
                 <div class="card-body">
                     <h4>Register</h4>
-                    <p><strong>POST /auth/register</strong> - Register a new user.</p>
+                    <p><strong>POST <code>/auth/register</code></strong> - Register a new user with a username and password.</p>
                     <pre>Headers: Content-Type: application/json <br>Body: { "username": "yourUsername", "password": "yourPassword" }</pre>
-                    <img src="../images/register-postman.png" alt="Register Example" class="img-fluid rounded shadow-sm mb-3">
                 </div>
             </div>
 
             <div class="card mb-3">
                 <div class="card-body">
                     <h4>Login</h4>
-                    <p><strong>POST /auth/login</strong> - Log in with your credentials to get a token.</p>
+                    <p><strong>POST <code>/auth/login</code></strong> - Log in with your credentials to receive a token for authentication.</p>
                     <pre>Headers: Content-Type: application/json <br>Body: { "username": "yourUsername", "password": "yourPassword" }</pre>
-                    <img src="../images/login-postman.png" alt="Login Example" class="img-fluid rounded shadow-sm mb-3">
                 </div>
             </div>
 
@@ -62,35 +61,32 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <h5>Get All Alcools</h5>
-                    <p><strong>GET /alcools/all</strong> - Retrieve a list of all alcoholic beverages.</p>
-                    <img src="../images/get-all-postman.png" alt="Get All Example" class="img-fluid rounded shadow-sm mb-3">
+                    <p><strong>GET <code>/alcools/all</code></strong> - Retrieve a list of all alcoholic beverages.</p>
                 </div>
             </div>
 
             <div class="card mb-3">
                 <div class="card-body">
                     <h5>Get a Specific Alcool</h5>
-                    <p><strong>GET /alcools/:id</strong> - Retrieve details for a specific beverage by ID.</p>
+                    <p><strong>GET <code>/alcools/:id</code></strong> - Retrieve details for a specific beverage by its ID.</p>
                     <p><strong>Example Request:</strong></p>
-                    <img src="../images/get-specific-postman.png" alt="Postman Get Specific Request" class="img-fluid rounded shadow-sm mb-3">
+                    <pre>GET /alcools/12345</pre>
                 </div>
             </div>
 
             <div class="card mb-3">
                 <div class="card-body">
                     <h5>Create a New Alcool</h5>
-                    <p><strong>POST /alcools/create</strong> - Add a new alcoholic beverage.</p>
+                    <p><strong>POST <code>/alcools/create</code></strong> - Add a new alcoholic beverage to the collection.</p>
                     <pre>Headers: Authorization: Bearer &lt;token&gt; <br>Body: { "name": "AlcoolName", "degree": "45", "ingredients": ["sugar", "water"], "description": "A fine drink" }</pre>
-                    <img src="../images/create-postman.png" alt="Create Example" class="img-fluid rounded shadow-sm mb-3">
                 </div>
             </div>
 
             <div class="card mb-3">
                 <div class="card-body">
                     <h5>Update an Alcool</h5>
-                    <p><strong>PUT /alcools/update/:id</strong> - Update an alcoholic beverage by ID.</p>
+                    <p><strong>PUT <code>/alcools/update/:id</code></strong> - Update an alcoholic beverage's details by its ID.</p>
                     <pre>Headers: Authorization: Bearer &lt;token&gt; <br>Body: { "name": "UpdatedName", "degree": "50" }</pre>
-                    <img src="../images/update-postman.png" alt="Update Example" class="img-fluid rounded shadow-sm mb-3">
                 </div>
             </div>
         </div>
@@ -104,27 +100,24 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <h5>Add a Comment</h5>
-                    <p><strong>POST /comments/:alcoolId</strong> - Add a comment to an alcool.</p>
+                    <p><strong>POST <code>/comments/:alcoolId</code></strong> - Add a comment to an alcool.</p>
                     <pre>Headers: Authorization: Bearer &lt;token&gt;<br>Body: { "content": "Great drink!" }</pre>
-                    <img src="../images/add-comment-postman.png" alt="Postman Get Specific Request" class="img-fluid rounded shadow-sm mb-3">
                 </div>
             </div>
 
             <div class="card mb-3">
                 <div class="card-body">
                     <h5>Update a Comment</h5>
-                    <p><strong>PUT /comments/:id</strong> - Update a comment by ID.</p>
+                    <p><strong>PUT <code>/comments/:id</code></strong> - Update a comment by its ID.</p>
                     <pre>Headers: Authorization: Bearer &lt;token&gt;<br>Body: { "content": "Updated content." }</pre>
-                    <img src="../images/update-comment-postman.png" alt="Postman Get Specific Request" class="img-fluid rounded shadow-sm mb-3">
                 </div>
             </div>
 
             <div class="card mb-3">
                 <div class="card-body">
                     <h5>Delete a Comment</h5>
-                    <p><strong>DELETE /comments/:id</strong> - Remove a comment by ID.</p>
+                    <p><strong>DELETE <code>/comments/:id</code></strong> - Remove a comment by its ID.</p>
                     <pre>Headers: Authorization: Bearer &lt;token&gt;</pre>
-                    <img src="../images/delete-comment-postman.png" alt="Postman Get Specific Request" class="img-fluid rounded shadow-sm mb-3">
                 </div>
             </div>
         </div>
@@ -136,10 +129,10 @@
         </div>
         <div class="card-body">
             <ul>
-                <li><strong>400 Bad Request:</strong> Invalid data or missing fields.</li>
-                <li><strong>401 Unauthorized:</strong> Missing or invalid token.</li>
-                <li><strong>403 Forbidden:</strong> Access denied.</li>
-                <li><strong>404 Not Found:</strong> Resource not found.</li>
+                <li><strong>400 Bad Request:</strong> Invalid data or missing fields in the request body.</li>
+                <li><strong>401 Unauthorized:</strong> Missing or invalid token in the Authorization header.</li>
+                <li><strong>403 Forbidden:</strong> User does not have permission to access the resource.</li>
+                <li><strong>404 Not Found:</strong> Resource not found (e.g., alcool or comment not found).</li>
             </ul>
         </div>
     </div>
