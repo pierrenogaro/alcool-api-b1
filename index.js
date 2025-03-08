@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const cors = require('cors'); // D'abord importez cors
+const cors = require('cors');
 const alcoolsRoutes = require('./routes/alcools');
 const authRoutes = require('./routes/auth');
 const commentRoutes = require('./routes/comments');
@@ -18,9 +18,8 @@ mongoose.connect(mongodbUri)
         console.error('🔴 Failed to connect to MongoDB:', err.message);
     });
 
-// Placez cette ligne ici, après avoir créé l'app express et avant vos middlewares/routes
 app.use(cors({
-    origin: 'http://localhost:5173' // Autorise uniquement votre frontend React
+    origin: 'http://localhost:5173'
 }));
 
 app.use(express.json());
