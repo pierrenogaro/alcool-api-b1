@@ -19,7 +19,7 @@ mongoose.connect(mongodbUri)
     });
 
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:8081']
+    origin: ['https://frontend-alcool.pierrenogaro.com/','https://data-viz-alcool.pierrenogaro.com/']
 }));
 
 app.use(express.json());
