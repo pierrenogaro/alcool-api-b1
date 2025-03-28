@@ -11,7 +11,11 @@ const AlcoolSchema = new mongoose.Schema({
     },
     ingredients: [mongoose.Schema.Types.String],
     description: mongoose.Schema.Types.String,
-
+    categorie: {
+        type: mongoose.Schema.Types.String,
+        enum: ['beer', 'wine', 'spirit', 'liqueur', 'cocktail', 'other'],
+        default: 'other'
+    },
     author: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
